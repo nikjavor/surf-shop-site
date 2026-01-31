@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Indika Surf Shop | Rentals & Board Repair in Midigama</title>
+    <meta
+      name="description"
+      content="Friendly local surfboard rentals + board repair in Midigama (Ahangama), Sri Lanka. Open daily 07:00–19:00. Call/WhatsApp +94 76 776 6172."
+    />
+    <meta name="theme-color" content="#0c4a4e" />
+
+    <style>
+      :root {
+        --sand: #f4ecd8;
+        --paper: #fbf6ea;
+        --ink: #1f1b16;
+        --muted: #5a4f43;
+        --teal: #0c4a4e;
+        --sea: #0a7a78;
+        --sun: #e07a3f;
+        --leaf: #2d6a4f;
+
+        --line: rgba(31, 27, 22, 0.14);
+        --shadow: 0 14px 42px rgba(0, 0, 0, 0.18);
+        --radius: 18px;
+        --max: 1100px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial;
+        line-height: 1.5;
+        background:
+          radial-gradient(
+            900px 500px at 15% 10%,
+            rgba(224, 122, 63, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 600px at 85% 20%,
+            rgba(10, 122, 120, 0.16),
+            transparent 55%
+          ),
+          repeating-linear-gradient(
+            135deg,
+            rgba(31, 27, 22, 0.03) 0 2px,
+            transparent 2px 10px
+          ),
+          var(--sand);
+      }
+
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(251, 246, 234, 0.78);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .topbar .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 900;
+        letter-spacing: 0.2px;
+      }
+      .logo {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+        background: var(--paper);
+        flex: 0 0 auto;
+      }
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .brand small {
+        display: block;
+        font-weight: 800;
+        color: var(--muted);
+        letter-spacing: 0.3px;
+        margin-top: 2px;
+      }
+
+      .nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .nav a {
+        text-decoration: none;
+        font-weight: 900;
+        font-size: 14px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        color: var(--muted);
+      }
+      .nav a:hover {
+        color: var(--ink);
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.45);
+      }
+      /* --- Mobile Nav --- */
+      .nav {
+        position: relative;
+      }
+
+      /* desktop links visible by default */
+      .nav-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      /* hamburger hidden on desktop */
+      .hamburger {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: 0px solid var(--line);
+        background: rgba(255, 255, 255, 0);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0;
+      }
+      .hamburger span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 999px;
+        margin: 2px 0;
+      }
+
+      /* mobile menu panel */
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 54px;
+        width: min(260px, 88vw);
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: rgba(251, 246, 234, 0.95);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+        padding: 10px;
+      }
+      .mobile-menu a {
+        display: block;
+        padding: 12px 12px;
+        border-radius: 12px;
+        font-weight: 950;
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .mobile-menu a:hover {
+        background: rgba(12, 74, 78, 0.1);
+      }
+
+      /* show hamburger + hide desktop links on small screens */
+      @media (max-width: 820px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .mobile-menu.open {
+          display: block;
+        }
+      }
+
+      /* hamburger "X" animation when open */
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+      .hamburger span {
+        transition:
+          transform 0.15s ease,
+          opacity 0.15s ease;
+      }
+
+      .hero {
+        padding: 34px 0 10px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 14px;
+        align-items: stretch;
+      }
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        background: rgba(251, 246, 234, 0.78);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-main {
+        padding: 22px;
+      }
+      .badge {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(12, 74, 78, 0.2);
+        background: rgba(12, 74, 78, 0.08);
+        color: var(--teal);
+        font-weight: 950;
+        font-size: 13px;
+      }
+
+      h1 {
+        margin: 12px 0 8px;
+        font-size: clamp(30px, 4.3vw, 48px);
+        line-height: 1.05;
+        letter-spacing: -0.6px;
+      }
+
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 700;
+        max-width: 65ch;
+        font-size: 16px;
+      }
+
+      .sinhala {
+        margin-top: 10px;
+        color: var(--leaf);
+        font-weight: 900;
+        letter-spacing: 0.2px;
+      }
+
+      .cta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 14px;
+        border-radius: 14px;
+        font-weight: 950;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.55);
+        cursor: pointer;
+      }
+      .btn:hover {
+        filter: brightness(0.98);
+      }
+      .btn.primary {
+        border: 0;
+        color: #fff;
+        background: linear-gradient(135deg, var(--teal), var(--sea));
+        box-shadow: 0 10px 24px rgba(12, 74, 78, 0.22);
+      }
+      .btn.sun {
+        border: 0;
+        color: #fff;
+        background: linear-gradient(135deg, var(--sun), #d05b2b);
+        box-shadow: 0 10px 24px rgba(224, 122, 63, 0.22);
+      }
+
+      .chips {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-weight: 900;
+        font-size: 14px;
+      }
+      .chip {
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px dashed rgba(31, 27, 22, 0.18);
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .hero-side {
+        padding: 18px;
+      }
+      .label {
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.35px;
+        font-weight: 950;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      .row {
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(31, 27, 22, 0.12);
+        background: rgba(255, 255, 255, 0.35);
+        margin-bottom: 10px;
+      }
+      .val {
+        font-weight: 950;
+      }
+      .val a {
+        color: var(--teal);
+        text-decoration: underline;
+        text-decoration-color: rgba(12, 74, 78, 0.35);
+      }
+      .val a:hover {
+        text-decoration-color: rgba(12, 74, 78, 0.8);
+      }
+
+      section {
+        padding: 14px 0;
+      }
+      .head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 8px 0 10px;
+      }
+      .head h2 {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: -0.2px;
+      }
+      .head p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 800;
+        text-align: right;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .tile {
+        grid-column: span 4;
+        padding: 16px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(31, 27, 22, 0.12);
+        background: rgba(251, 246, 234, 0.75);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+      }
+      @media (max-width: 900px) {
+        .tile {
+          grid-column: span 6;
+        }
+      }
+      @media (max-width: 560px) {
+        .tile {
+          grid-column: span 12;
+        }
+      }
+      .tile h3 {
+        margin: 0 0 6px;
+        font-size: 16px;
+      }
+      .tile p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 750;
+      }
+      .tag {
+        display: inline-flex;
+        margin-top: 10px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-weight: 950;
+        font-size: 12px;
+        border: 1px solid rgba(12, 74, 78, 0.18);
+        background: rgba(12, 74, 78, 0.07);
+        color: var(--teal);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 900px) {
+        .split {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .pricebox {
+        padding: 16px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(31, 27, 22, 0.12);
+        background: rgba(255, 255, 255, 0.42);
+      }
+      .price {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px dashed rgba(31, 27, 22, 0.18);
+        background: rgba(251, 246, 234, 0.78);
+        margin-top: 10px;
+        font-weight: 950;
+      }
+      .price small {
+        color: var(--muted);
+        font-weight: 900;
+      }
+      .note {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-weight: 800;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 10px;
+      }
+      .g {
+        grid-column: span 4;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(31, 27, 22, 0.14);
+        background: rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+        min-height: 190px;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+      @media (max-width: 900px) {
+        .g {
+          grid-column: span 6;
+        }
+      }
+      @media (max-width: 560px) {
+        .g {
+          grid-column: span 12;
+        }
+      }
+      .g img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.2s ease;
+      }
+      .g:hover img {
+        transform: scale(1.03);
+      }
+
+      /* Reviews + Video */
+      .review {
+        padding: 16px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(31, 27, 22, 0.12);
+        background: rgba(251, 246, 234, 0.78);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+      }
+      .stars {
+        color: var(--sun);
+        font-weight: 950;
+        letter-spacing: 1px;
+      }
+      .quote {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-weight: 800;
+      }
+      .who {
+        margin-top: 10px;
+        font-weight: 950;
+      }
+      .review a {
+        color: var(--teal);
+        font-weight: 950;
+      }
+
+      .video {
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid rgba(31, 27, 22, 0.12);
+        background: rgba(251, 246, 234, 0.78);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+      }
+      .video iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: 0;
+        display: block;
+      }
+      .video-cap {
+        padding: 14px 16px;
+        color: var(--muted);
+        font-weight: 850;
+      }
+
+      /* Lightbox */
+      .lb {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        background: rgba(0, 0, 0, 0.78);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+      }
+      .lb.open {
+        display: flex;
+      }
+      .lb-inner {
+        width: min(1100px, 96vw);
+        border-radius: 18px;
+        overflow: hidden;
+        background: #000;
+        position: relative;
+        box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+      }
+      .lb-inner img {
+        width: 100%;
+        height: 86vh;
+        object-fit: contain;
+        display: block;
+      }
+      .lb-top {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .lb-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(251, 246, 234, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        font-weight: 950;
+        color: var(--ink);
+      }
+      .lb-btn {
+        cursor: pointer;
+        user-select: none;
+      }
+
+      footer {
+        margin-top: 20px;
+        padding: 22px 0 34px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-weight: 850;
+        font-size: 14px;
+      }
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .tiny {
+        font-size: 12px;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="wrap">
+        <div class="brand">
+          <div class="logo" title="Indika Surf Shop sign">
+            <img src="photos/logo.jpg" alt="Indika Surf Shop logo sign" />
+          </div>
+          <div>
+            Indika Surf Shop
+            <small>Surfboards • Rental &amp; Repair</small>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Site navigation">
+          <!-- Desktop links -->
+          <div class="nav-links" id="navLinks">
+            <a href="#rentals">Rentals</a>
+            <a href="#prices">Prices</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#video">Video</a>
+            <a href="#photos">Photos</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <!-- Mobile hamburger button -->
+          <button
+            class="hamburger"
+            id="hamburgerBtn"
+            aria-label="Open menu"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- Mobile dropdown panel -->
+          <div
+            class="mobile-menu"
+            id="mobileMenu"
+            role="menu"
+            aria-hidden="true"
+          >
+            <a href="#rentals" role="menuitem">Rentals</a>
+            <a href="#prices" role="menuitem">Prices</a>
+            <a href="#reviews" role="menuitem">Reviews</a>
+            <a href="#video" role="menuitem">Video</a>
+            <a href="#photos" role="menuitem">Photos</a>
+            <a href="#contact" role="menuitem">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero" id="top">
+        <div class="hero-grid">
+          <div class="card hero-main">
+            <div class="badge">Midigama • Ahangama • Sri Lanka</div>
+            <h1>Friendly local surf rentals + board repair.</h1>
+            <p class="sub">
+              Simple, low-key, and great value. Rent a shortboard or longboard —
+              and you can change boards anytime during your rental. Need a ding
+              fix? Bring your board and we’ll help you out.
+            </p>
+
+            <div class="sinhala">
+              හිතවත් සේවාව • අඩු මිල • කුලියට &amp; රිපෙයාර්
+            </div>
+
+            <div class="cta">
+              <a class="btn primary" href="tel:+94767766172"
+                >Call +94 76 776 6172</a
+              >
+              <a
+                class="btn sun"
+                href="https://wa.me/94767766172"
+                target="_blank"
+                rel="noopener"
+                >WhatsApp</a
+              >
+              <a class="btn" href="#contact">Directions</a>
+            </div>
+
+            <div class="chips" role="list">
+              <span class="chip" role="listitem">🏄 Rentals</span>
+              <span class="chip" role="listitem">🛠️ Board repair</span>
+              <span class="chip" role="listitem">🔁 Change boards anytime</span>
+              <span class="chip" role="listitem"
+                >🕖 Open daily 07:00–19:00</span
+              >
+            </div>
+          </div>
+
+          <aside class="card hero-side" aria-label="Quick info">
+            <div class="row">
+              <div class="label">Hours</div>
+              <div class="val">Every day • 07:00 – 19:00</div>
+            </div>
+            <div class="row">
+              <div class="label">Phone / WhatsApp</div>
+              <div class="val">
+                <a href="tel:+94767766172">+94 76 776 6172</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Address</div>
+              <div class="val">
+                Galle–Matara Road, Wellawattha, Midigama, Ahangama 80650
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Social</div>
+              <div class="val">No Instagram — WhatsApp is best</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="rentals">
+        <div class="head">
+          <h2>What you can do here</h2>
+          <p>Local help, no fuss.</p>
+        </div>
+
+        <div class="grid">
+          <div class="tile">
+            <h3>Surfboard Rentals</h3>
+            <p>
+              Shortboards and longboards. Pick what feels good — and you can
+              swap boards anytime.
+            </p>
+            <div class="tag">Flexible rentals</div>
+          </div>
+          <div class="tile">
+            <h3>Board Repair</h3>
+            <p>
+              Dings, cracks, fin issues and more. Bring it in and we’ll
+              recommend the best fix.
+            </p>
+            <div class="tag">Repair &amp; advice</div>
+          </div>
+          <div class="tile">
+            <h3>Good value</h3>
+            <p>
+              Friendly and affordable — ask about discounts for longer rentals.
+            </p>
+            <div class="tag">Budget-friendly</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="prices">
+        <div class="head">
+          <h2>Rental prices</h2>
+          <p>Cheap daily rates + longer discounts.</p>
+        </div>
+
+        <div class="split">
+          <div class="card" style="padding: 16px">
+            <div class="pricebox">
+              <div class="label">Daily rates</div>
+
+              <div class="price">
+                <div>Shortboard <small>(per day)</small></div>
+                <div>1500 LKR</div>
+              </div>
+
+              <div class="price">
+                <div>Longboard <small>(per day)</small></div>
+                <div>2100 LKR</div>
+              </div>
+
+              <p class="note">
+                Discounts for longer periods — message on WhatsApp for the best
+                rate.
+              </p>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 16px">
+            <div class="pricebox">
+              <div class="label">Good to know</div>
+              <div class="price">
+                <div>Board swapping</div>
+                <div>Anytime 🔁</div>
+              </div>
+              <div class="price">
+                <div>Open</div>
+                <div>07:00–19:00</div>
+              </div>
+              <p class="note">
+                Just send a message: short/long + number of days + when you’ll
+                come.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews">
+        <div class="head">
+          <h2>Google reviews</h2>
+          <p>Let customers talk</p>
+        </div>
+
+        <div class="split">
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <div class="quote">
+              “Rented a 6.2 shortboard for 15 days and was really happy. The
+              service including the return was easy, fair, and professionally
+              handled ...”
+            </div>
+            <div class="who">— Oliver</div>
+            <div style="margin-top: 10px">
+              <a id="rev1" href="#" target="_blank" rel="noopener"
+                >Read on Google</a
+              >
+            </div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <div class="quote">
+              “Great place, kind owner. Some of the boards are well-used, but at
+              a very fair price. If you want to rent or repair a board and feel
+              safe and secure, go to them.”
+            </div>
+            <div class="who">— Ksawery Morka</div>
+            <div style="margin-top: 10px">
+              <a id="rev2" href="#" target="_blank" rel="noopener"
+                >Read on Google</a
+              >
+            </div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <div class="quote">
+              “Highly recommended!! The best surfboards repair shop in this
+              area. They fixed perfectly and quickly ...”
+            </div>
+            <div class="who">— Yusuke Yashima</div>
+            <div style="margin-top: 10px">
+              <a id="rev3" href="#" target="_blank" rel="noopener"
+                >Read on Google</a
+              >
+            </div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★</div>
+            <div class="quote">
+              “Nice place to rent a surfboard! Most boards are a little bit old,
+              but there is a lot of choice so you can find a hidden gem, which
+              is nice for 1,500 a day ...”
+            </div>
+            <div class="who">— Augustin NCH</div>
+            <div style="margin-top: 10px">
+              <a id="rev4" href="#" target="_blank" rel="noopener"
+                >Read on Google</a
+              >
+            </div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <div class="quote">
+              “Indika Surf Shop: Where Quality Meets Expertise in Surfboard
+              Repair 🇱🇰❤️ I recently had the pleasure of experiencing the
+              exceptional service provided by Indika Surf Shop for repairing my
+              damaged surfboard. From start to finish, the entire process was
+              seamless and highly satisfying ...”
+            </div>
+            <div class="who">— Janani Gunasekara</div>
+            <div style="margin-top: 10px">
+              <a id="rev5" href="#" target="_blank" rel="noopener"
+                >Read on Google</a
+              >
+            </div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <div class="quote">
+              "Most boards are a bit old but you can’t complain for 1,500lkr a
+              day. Had some great surfs and had no issues when handing them back
+              as we took care not to damage them."
+            </div>
+            <div class="who">— Zachary Coubrough</div>
+            <div style="margin-top: 10px">
+              <a id="rev6" href="#" target="_blank" rel="noopener"
+                >Read on Google</a
+              >
+            </div>
+          </div>
+
+          <!-- <div class="review">
+            <div class="stars">★★★★★</div>
+            <div class="quote">
+              Real Google review (link):
+              <a id="rev2" href="#" target="_blank" rel="noopener">Open</a>
+            </div>
+            <div class="who">Review #2</div>
+          </div> -->
+        </div>
+
+        <div style="margin-top: 12px">
+          <a
+            class="btn primary"
+            id="gmListing"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            >Read all reviews on Google Maps</a
+          >
+          <a class="btn" id="gmWrite" href="#" target="_blank" rel="noopener"
+            >Write a review</a
+          >
+        </div>
+      </section>
+
+      <section id="video">
+        <div class="head">
+          <h2>Work video</h2>
+          <p>A quick look at repairs &amp; the vibe.</p>
+        </div>
+
+        <div class="video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/DkilDqjBM0A"
+            title="Indika Surf Shop - Repairs video"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            allowfullscreen
+          >
+          </iframe>
+          <div class="video-cap">
+            Short video showing the workshop and board work — friendly local
+            service.
+          </div>
+        </div>
+
+        <div style="margin-top: 12px">
+          <a
+            class="btn sun"
+            href="https://youtu.be/DkilDqjBM0A"
+            target="_blank"
+            rel="noopener"
+            >Open on YouTube</a
+          >
+        </div>
+      </section>
+
+      <section id="photos">
+        <div class="head">
+          <h2>Photos</h2>
+          <p>Boards, workshop, and the vibe.</p>
+        </div>
+
+        <div class="gallery">
+          <div
+            class="g"
+            data-src="photos/01.jpg"
+            data-caption="Boards & repairs"
+          >
+            <img
+              src="photos/01.jpg"
+              alt="Boards on repair stands"
+              loading="lazy"
+            />
+          </div>
+          <div class="g" data-src="photos/02.jpg" data-caption="Repair yard">
+            <img src="photos/02.jpg" alt="Outdoor repair area" loading="lazy" />
+          </div>
+          <div
+            class="g"
+            data-src="photos/03.jpg"
+            data-caption="Storage + shade"
+          >
+            <img
+              src="photos/03.jpg"
+              alt="Boards stacked in shade"
+              loading="lazy"
+            />
+          </div>
+          <div class="g" data-src="photos/04.jpg" data-caption="Board racks">
+            <img src="photos/04.jpg" alt="Boards under a roof" loading="lazy" />
+          </div>
+          <div
+            class="g"
+            data-src="photos/05.jpg"
+            data-caption="More boards available"
+          >
+            <img
+              src="photos/05.jpg"
+              alt="Board storage with tropical trees"
+              loading="lazy"
+            />
+          </div>
+          <div class="g" data-src="photos/06.jpg" data-caption="Finishing work">
+            <img
+              src="photos/06.jpg"
+              alt="Work being done on a board"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="head">
+          <h2>Contact</h2>
+          <p>WhatsApp is fastest.</p>
+        </div>
+
+        <div class="split">
+          <div class="card" style="padding: 16px">
+            <div class="row" style="margin-bottom: 0">
+              <div class="label">Message template</div>
+              <div
+                class="val"
+                style="color: var(--muted); font-weight: 850; margin-top: 6px"
+              >
+                Hi! I want to rent a (shortboard/longboard) for (X) days. Can I
+                come at (time) today? 🙂
+              </div>
+            </div>
+
+            <div class="cta" style="margin-top: 12px">
+              <a class="btn primary" href="tel:+94767766172">Call</a>
+              <a
+                class="btn sun"
+                href="https://wa.me/94767766172"
+                target="_blank"
+                rel="noopener"
+                >WhatsApp</a
+              >
+            </div>
+          </div>
+
+          <div class="card" style="padding: 16px">
+            <div class="row">
+              <div class="label">Hours</div>
+              <div class="val">Daily • 07:00 – 19:00</div>
+            </div>
+            <div class="row">
+              <div class="label">Address</div>
+              <div class="val">
+                Galle–Matara Road, Wellawattha, Midigama, Ahangama 80650
+              </div>
+            </div>
+            <div class="row" style="margin-bottom: 0">
+              <div class="label">Directions</div>
+              <div class="val">
+                <a id="mapsLink" href="#" target="_blank" rel="noopener"
+                  >Open in Google Maps</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="foot">
+          <div>© <span id="year"></span> Indika Surf Shop • Midigama</div>
+          <!-- <div class="tiny">Simple local site • Easy to update</div> -->
+          <div class="tiny">We only accept cash</div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lb" id="lb" aria-hidden="true">
+      <div
+        class="lb-inner"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Photo viewer"
+      >
+        <div class="lb-top">
+          <div class="lb-chip" id="lbCap">Photo</div>
+          <div class="lb-chip lb-btn" id="lbClose">✕ Close</div>
+        </div>
+        <img id="lbImg" alt="Enlarged photo" />
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // ✅ Use the exact pin link you provided:
+      const mapsPin = "https://maps.app.goo.gl/HowQZWpaM7kLsduq6?g_st=ic";
+      document.getElementById("mapsLink").href = mapsPin;
+      document.getElementById("gmListing").href = mapsPin;
+      document.getElementById("gmWrite").href = mapsPin;
+
+      // ✅ Review deep links you provided:
+      const reviewLinks = [
+        "https://maps.app.goo.gl/WjJaTqUS3kkP8NZy8?g_st=ic",
+        "https://maps.app.goo.gl/hMac29HzuZ9ThVQZ8?g_st=ic",
+        "https://maps.app.goo.gl/9XVkAaWg9hNQ8SAp9?g_st=ic",
+        "https://maps.app.goo.gl/6sSMVzGckZgocuVZA?g_st=ic",
+        "https://maps.app.goo.gl/9wgS4fxZnDuz3Sub8?g_st=ic",
+        "https://maps.app.goo.gl/J5XKQf8wEQ6azzGy7?g_st=ic",
+      ];
+      document.getElementById("rev1").href = reviewLinks[0];
+      document.getElementById("rev2").href = reviewLinks[1];
+      document.getElementById("rev3").href = reviewLinks[2];
+      document.getElementById("rev4").href = reviewLinks[3];
+      document.getElementById("rev5").href = reviewLinks[4];
+      document.getElementById("rev6").href = reviewLinks[5];
+
+      // Gallery lightbox
+      const lb = document.getElementById("lb");
+      const lbImg = document.getElementById("lbImg");
+      const lbCap = document.getElementById("lbCap");
+      const lbClose = document.getElementById("lbClose");
+
+      function openLB(src, cap) {
+        lbImg.src = src;
+        lbCap.textContent = cap || "Photo";
+        lb.classList.add("open");
+        lb.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+      function closeLB() {
+        lb.classList.remove("open");
+        lb.setAttribute("aria-hidden", "true");
+        lbImg.src = "";
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll(".g").forEach((el) => {
+        el.addEventListener("click", () =>
+          openLB(el.dataset.src, el.dataset.caption),
+        );
+      });
+
+      lbClose.addEventListener("click", closeLB);
+      lb.addEventListener("click", (e) => {
+        if (e.target === lb) closeLB();
+      });
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLB();
+      });
+
+      // Mobile hamburger menu
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      function closeMenu() {
+        mobileMenu.classList.remove("open");
+        hamburgerBtn.classList.remove("open");
+        hamburgerBtn.setAttribute("aria-expanded", "false");
+        mobileMenu.setAttribute("aria-hidden", "true");
+      }
+
+      function toggleMenu() {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburgerBtn.classList.toggle("open", isOpen);
+        hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
+        mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+      }
+
+      hamburgerBtn.addEventListener("click", toggleMenu);
+
+      // Close menu when user clicks a link
+      mobileMenu.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", closeMenu);
+      });
+
+      // Close menu if user clicks outside
+      document.addEventListener("click", (e) => {
+        if (!mobileMenu.contains(e.target) && !hamburgerBtn.contains(e.target))
+          closeMenu();
+      });
+
+      // Close on Escape
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+    </script>
+  </body>
+</html>
